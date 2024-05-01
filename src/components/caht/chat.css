@@ -46,15 +46,17 @@
     gap: 20px;
     .message {
       max-width: 70%;
+      /* width: 100%; */
       display: flex;
+      flex-direction: column;
       gap: 20px;
       &.own {
         /* align-items: flex-end; */
         align-self: flex-end;
         .texts {
           img {
-            width: 100%;
-            height: 300px;
+            width: 300px;
+            height: 200px;
             border-radius: 10px;
           }
           p {
@@ -63,16 +65,17 @@
         }
       }
       img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        object-fit: cover;
+        width: 300px;
+        height: 200px;
+        border-radius: 12px;
+        /* object-fit: contain; */
       }
       .texts {
         flex: 1;
         display: flex;
         flex-direction: column;
         gap: 5px;
+
         p {
           padding: 20px;
           background-color: rgba(17, 25, 40, 0.3);
@@ -122,6 +125,9 @@
       flex: 1;
       color: white;
       background-color: rgba(17, 25, 40, 0.5);
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
     .sendBtn {
       border-radius: 5px;
@@ -129,6 +135,15 @@
       background: #5183fe;
       color: #fff;
       border: none;
+      &:disabled {
+        background-color: #5182fe97;
+        cursor: not-allowed;
+      }
     }
   }
+}
+.sendImg {
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
 }
