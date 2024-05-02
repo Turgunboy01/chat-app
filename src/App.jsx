@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import List from "./components/list/List";
 import Chat from "./components/caht/Chat";
 import Details from "./components/details/Details";
@@ -11,8 +11,12 @@ import { useChatStore } from "./lib/chatStore";
 
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
-
   const { chatId } = useChatStore();
+  const [hideDetail, sethideDetail] = useState(false);
+
+  const handleHideClick = () => {
+    sethideDetail(!hideDetail);
+  };
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
@@ -29,9 +33,9 @@ const App = () => {
     <div className="container">
       {currentUser ? (
         <>
-          <List />
-          {chatId && <Chat />}
-          {chatId && <Details />}
+          <List handleHideClick={handleHideClick} />
+          {chatId && <Chat handleHideClick={handleHideClick} />}
+          {chatId && hideDetail && <Details />}
         </>
       ) : (
         <Login />

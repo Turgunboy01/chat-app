@@ -20,11 +20,14 @@ import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
+import { FaSearch } from "react-icons/fa";
 
-const Chat = () => {
+const Chat = ({ handleHideClick }) => {
   const [chat, setChat] = useState();
   const [openEmoji, setOpenEmoji] = useState(false);
   const [text, setType] = useState("");
+  const [click, setClick] = useState(false);
+  const [search, setSearch] = useState("");
 
   const endRef = useRef(null);
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
@@ -114,7 +117,7 @@ const Chat = () => {
   return (
     <div className="chat">
       <div className="top">
-        <div className="user">
+        <div className="user" onClick={handleHideClick}>
           <img src={user?.avatar || avatar} alt="" />
           <div className="texts">
             <span>{user?.username}</span>
@@ -125,6 +128,18 @@ const Chat = () => {
           <img src={phone} alt="phone" />
           <img src={video} alt="video" />
           <img src={info} alt="info" />
+
+          <FaSearch size={23} onClick={() => setClick(!click)} />
+        </div>
+        <div className="search">
+          {click && (
+            <input
+              type="text"
+              placeholder="Search chat..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          )}
         </div>
       </div>
       <div className="center">

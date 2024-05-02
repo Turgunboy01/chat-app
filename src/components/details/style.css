@@ -41,16 +41,22 @@
         gap: 20px;
         width: 100%;
         margin-top: 20px;
+        overflow-y: scroll;
+        height: 210px;
+        &::-webkit-scrollbar {
+          display: none;
+        }
         .photoItem {
           display: flex;
           justify-content: space-between;
           .photoDetail {
             display: flex;
             align-items: center;
+            gap: 10px;
             img {
-              width: 40px;
-              height: 40px;
-              border-radius: 5px;
+              width: 60px;
+              height: 50px;
+              border-radius: 12px;
               object-fit: cover;
             }
             span {

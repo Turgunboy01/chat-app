@@ -5,7 +5,7 @@ import more from "../../../../public/more.png";
 import video from "../../../../public/video.png";
 import edit from "../../../../public/edit.png";
 import { useUserStore } from "../../../lib/userStore";
-const UserInfo = () => {
+const UserInfo = ({ handleHideClick }) => {
   const { currentUser } = useUserStore();
   return (
     <div className="userInfo">
@@ -14,9 +14,14 @@ const UserInfo = () => {
         <h2>{currentUser.username}</h2>
       </div>
       <div className="icons">
-        <img src={more} alt="more" />
-        <img src={video} alt="video" />
-        <img src={edit} alt="edit" />
+        <img
+          src={more}
+          alt="more"
+          onClick={handleHideClick}
+          className="moreIcond"
+        />
+        {/* <img src={video} alt="video" />
+        <img src={edit} alt="edit" /> */}
       </div>
     </div>
   );
